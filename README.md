@@ -5,35 +5,37 @@ Medical_Assistant is a system that uses AI-driven speech-to-text and text-genera
 
 ### Frontend_Configuration
 
-#### Install dependencies for the React frontend:
-* Go to frontend folder:
+* Change current directory to frontend folder:
     ```
     cd Medical_Assistant/AI_Suggestion_App/frontend
     ```
+* To install dependencies 
     ```
     npm install
     ```
+* To run the frontend
     ```
     npm start
     ```
 
-* It will run on your browser.
+* Now, it will run on your browser.
 * To stop the server:
 In your terminal, press ```ctrl``` + ```c``` keys.
 
 
 ### Backend_Configuration
-* Give the right path to your terminal:
+* Use a new seperate terminal for the backend
+* Change current directory to backend folder:
     ```
     cd Medical_Assistant/AI_Suggestion_App/backend
     ```
 
 #### Setting up the Virtual Environment:
- * Refer the documentation to create and activate the virtual environment. (https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+ * Refer the documentation to create and activate the virtual environment [here.](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
  * After activating Virtual Environment,run below commands in your terminal:
   
- * To install Dependencies(Can change According to your requirement):
+ * To install Dependencies:
     ```
     pip install flask flask-cors transformers torch
     ```
@@ -55,23 +57,57 @@ In your terminal, press ```ctrl``` + ```c``` keys.
     ```
 
 #### Setting up the Virtual Environment:
- * Refer the documentation to create and activate the virtual environment. (https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+ * Refer the documentation to create and activate the virtual environment [here.](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
 
  * After activating Virtual Environment,run below commands in your terminal:
-  
- * To install Dependencies(Can change According to your requirement):
-    ```
-    pip install transformers==4.30.2 torch sacremoses 
-    ```
-    
- * To run the Predictor python file:
+   
+#### Installing Dependencies to run predictor.py
+ * To install pytorch. Refer the official site [here](https://pytorch.org/get-started/locally/)
+ * To install transformers.
+   ```
+   pip install transformers
+   ```
+ * To install protobuf.
+   ```
+   pip install protobuf
+   ```
+ * To install sacremoses.
+   ```
+   pip install sacremoses
+   ```
+ * Now, run the Predictor python file:
     ```
     python predictor.py
     ```
- * To run the Trainer python file:
+### Installing Dependencies to run trainer.py
+### *** If you did not set up the above environment for the predictor.py, please follow below steps:
+   * Change the path of your terminal:
+ ```
+    cd Medical_Assistant/Next_Word_Prediction
+ ```
+
+##### Setting up the Virtual Environment:
+  * Refer the documentation to create and activate the virtual environment [here.](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)
+
+  * After activating Virtual Environment,run below commands in your terminal:
+   
+##### Installing Dependencies
+ * To install pytorch. Refer the official site [here](https://pytorch.org/get-started/locally/)
+ * To install transformers.
+   ```
+   pip install transformers
+   ```
+### *** If you did setup .venv and install dependencies for predictor.py skip the above steps and continue from here....
+ * First change the current directory in the terminal and navigate to the virtual environment and activate.
+ * To install datasets
+   ```
+    pip install datasets
     ```
-    pip install transformers[torch] accelerate
+ * To install accelerate
+   ```
+    pip install accelerate
     ```
+ * Now, run the trainer.py file:
     ```
     python trainer.py
     ```      
