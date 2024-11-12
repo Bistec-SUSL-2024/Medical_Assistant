@@ -3,7 +3,8 @@
     border-radius: 4px;
     background-color: #fff;
     position: absolute;
-    margin-top: -7px;
+    margin-top: -90px;
+    margin-inline-start: 18px;
     max-height: 200px;
     overflow-y: auto;
     width: 55%;
