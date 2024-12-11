@@ -7,26 +7,8 @@ import difflib
 app = Flask(__name__)
 CORS(app)
 
-"""
-common_phrases = [
-    "Patient reports severe chest pain and shortness of breath.",
-    "Patient reports severe chest pain and dizziness.",
-    "The patient was prescribed a low dose of ACE inhibitors.",
-    "The patient was prescribed a course of antibiotics.",
-    "The patient is experiencing fatigue and loss of appetite.",
-    "The patient is experiencing mild headaches.",
-    "Patient complains of abdominal pain and nausea.",
-    "Patient complains of back pain and stiffness.",
-    "The patient is experiencing shortness of breath and chest pain.",
-    "The patient is experiencing severe chest pain and dizziness.",
-    "The patient is experiencing severe chest pain and shortness of breath.",
-    "The patient is experiencing severe chest pain and fatigue.",
-    "patient reports severe chest pain and shortness of breath.",
-    "patient reports severe chest pain and dizziness."
-]
-"""
 
-model_name = "microsoft/BioGPT"
+model_name = "microsoft/BioGPT" #can call through local path also
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 model = AutoModelForCausalLM.from_pretrained(model_name)
 text_gen_model = pipeline('text-generation', model=model, tokenizer=tokenizer) # device=0 to use GPU

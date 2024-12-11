@@ -1,12 +1,14 @@
 from transformers import BioGptTokenizer, BioGptForCausalLM, Trainer, TrainingArguments
 from datasets import load_dataset
+import torch
+
 
 # Load the BioGPT tokenizer and model
 tokenizer = BioGptTokenizer.from_pretrained('microsoft/BioGPT')
 model = BioGptForCausalLM.from_pretrained('microsoft/BioGPT')
 
 # Load dataset
-dataset = load_dataset('csv', data_files='data/drugs_side_effects_dataset.csv')
+dataset = load_dataset('csv', data_files='data/dataset_100_symptoms.csv')
 
 
 
@@ -14,25 +16,10 @@ dataset = load_dataset('csv', data_files='data/drugs_side_effects_dataset.csv')
 dataset = dataset['train'].train_test_split(test_size=0.1)
 
 
-"""def tokenize_function(examples):
-    
-    # New Preprocessing part # Process each item in the side_effects list
-    texts = []
-    for side_effect in examples['side_effects']:
-        # Split each entry by comma, strip whitespace, and join with spaces
-        effects = [effect.strip() for effect in side_effect.split(',')]
-        texts.append(' '.join(effects))
-    
-    
-   
-    # Tokenize the text
-    inputs = tokenizer(texts, padding="max_length", truncation=True, max_length=128)
-    inputs['labels'] = inputs['input_ids'].copy()  # Set input_ids as labels for causal LM task
-    return inputs"""
 
 def tokenize_function(examples):
     texts = []
-    for side_effect in examples['side_effects']:
+    for side_effect in examples['symptoms']:
         if side_effect is None:
             texts.append('')  # Add an empty string if side_effect is None
         else:
@@ -71,8 +58,22 @@ trainer = Trainer(
 trainer.train()
 
 # Save the fine-tuned model and tokenizer
-model.save_pretrained('./fine_tuned_BioGPT')
-tokenizer.save_pretrained('./fine_tuned_BioGPT')
+# model.save_pretrained('./results')
+# tokenizer.save_pretrained('./results')
+
+
+# Save the model in .bin format
+output_dir = './results'
+
+# Save the fine-tuned model and tokenizer
+model.save_pretrained(output_dir)
+tokenizer.save_pretrained(output_dir)
+
+# Save the model weights as a .bin file explicitly
+#using pytorch
+torch.save(model.state_dict(), f"{output_dir}/pytorch_model.bin")
+
+print(f"Model and tokenizer saved in {output_dir}")
 
 #First test run results:
 """Generating train split: 14 examples [00:01, 12.37 examples/s]
