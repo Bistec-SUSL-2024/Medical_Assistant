@@ -104,7 +104,7 @@ useEffect(() => {
             // Debounce API calls
             debounceTimeout.current = setTimeout(async () => {
                 try {
-                    const response = await axios.post('http://127.0.0.1:5000/suggest', { 
+                    const response = await axios.post('https://gpt2apiimg-388091007362.asia-south1.run.app/suggest', { 
                         input: currentLine 
                     });
                     

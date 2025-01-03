@@ -9,7 +9,7 @@ function App() {
 
     // Define backend URLs for different models
     const modelBackendUrls = {
-        'GPT2':'https://medicalback-34822786368.asia-south1.run.app/suggest',
+        'GPT2':'https://gpt2apiimg-388091007362.asia-south1.run.app/suggest',
         'BIOGPT':'https://biosuggimg-1081715976745.asia-south1.run.app/suggest',
         'GPT-3.5 Turbo':'https://gpt3-5img-588828373957.asia-south1.run.app/suggest',
         'GPT-4.0':'https://backendapiimg-311437687915.us-central1.run.app/suggest',
